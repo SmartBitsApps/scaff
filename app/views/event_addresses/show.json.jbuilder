@@ -1,0 +1,1 @@
+json.partial! "event_addresses/event_address", event_address: @event_address

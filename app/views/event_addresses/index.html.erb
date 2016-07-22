@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Event Addresses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Street</th>
+      <th>Street number</th>
+      <th>City</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_addresses.each do |event_address| %>
+      <tr>
+        <td><%= event_address.event.title %></td>
+        <td><%= event_address.street %></td>
+        <td><%= event_address.street_number %></td>
+        <td><%= event_address.city %></td>
+        <td><%= link_to 'Show', event_address %></td>
+        <td><%= link_to 'Edit', edit_event_address_path(event_address) %></td>
+        <td><%= link_to 'Destroy', event_address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event address', new_event_address_path %>

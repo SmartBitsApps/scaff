@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @event_address.event.title %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @event_address.street %>
+</p>
+
+<p>
+  <strong>Street number:</strong>
+  <%= @event_address.street_number %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @event_address.city %>
+</p>
+
+<%= link_to 'Edit', edit_event_address_path(@event_address) %> |
+<%= link_to 'Back', event_addresses_path %>

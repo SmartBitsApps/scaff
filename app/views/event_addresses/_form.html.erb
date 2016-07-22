@@ -1,0 +1,14 @@
+<%= simple_form_for(@event_address) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :event %>
+    <%= f.input :street %>
+    <%= f.input :street_number %>
+    <%= f.input :city %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

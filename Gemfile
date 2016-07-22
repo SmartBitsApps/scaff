@@ -4,6 +4,8 @@ ruby '2.3.1'
 
 # for authnetication
 gem 'devise', '~> 4.1', '>= 4.1.1'
+gem 'simple_form'
+gem 'annotate', '~> 2.7', '>= 2.7.1'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
