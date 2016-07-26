@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :accounts
   resources :subscriptions
   resources :brigades
   resources :positions

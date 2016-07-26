@@ -1,0 +1,25 @@
+<%= simple_form_for(@account) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.input :degree_before %>
+    <%= f.input :degree_after %>
+    <%= f.input :birth_name %>
+    <%= f.input :birth_date %>
+    <%= f.input :gender %>
+    <%= f.input :birth_place %>
+    <%= f.input :birth_number %>
+    <%= f.input :nationality %>
+    <%= f.input :family_status %>
+    <%= f.input :bank_acc %>
+    <%= f.input :insurance %>
+    <%= f.input :occupation %>
+    <%= f.input :terms %>
+    <%= f.input :status %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

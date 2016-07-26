@@ -1,0 +1,2 @@
+json.extract! account, :id, :user_id, :degree_before, :degree_after, :birth_name, :birth_date, :gender, :birth_place, :birth_number, :nationality, :family_status, :bank_acc, :insurance, :occupation, :terms, :status, :created_at, :updated_at
+json.url account_url(account, format: :json)

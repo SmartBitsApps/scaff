@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Accounts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Degree before</th>
+      <th>Degree after</th>
+      <th>Birth name</th>
+      <th>Birth date</th>
+      <th>Gender</th>
+      <th>Birth place</th>
+      <th>Birth number</th>
+      <th>Nationality</th>
+      <th>Family status</th>
+      <th>Bank acc</th>
+      <th>Insurance</th>
+      <th>Occupation</th>
+      <th>Terms</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.user %></td>
+        <td><%= account.degree_before %></td>
+        <td><%= account.degree_after %></td>
+        <td><%= account.birth_name %></td>
+        <td><%= account.birth_date %></td>
+        <td><%= account.gender %></td>
+        <td><%= account.birth_place %></td>
+        <td><%= account.birth_number %></td>
+        <td><%= account.nationality %></td>
+        <td><%= account.family_status %></td>
+        <td><%= account.bank_acc %></td>
+        <td><%= account.insurance %></td>
+        <td><%= account.occupation %></td>
+        <td><%= account.terms %></td>
+        <td><%= account.status %></td>
+        <td><%= link_to 'Show', account %></td>
+        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Account', new_account_path %>

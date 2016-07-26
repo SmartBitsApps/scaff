@@ -26,8 +26,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         
-  has_many :events
+  
+  has_one :account, dependent: :destroy   
+  has_many :events, dependent: :nullify
   has_many :subscriptions, dependent: :destroy
   has_many :brigades, through: :subscriptions
   
@@ -40,7 +41,7 @@ class User < ActiveRecord::Base
   
   # sets default settings and build account for user
   after_initialize :set_default_role_and_status, :if => :new_record?
-  
+  after_initialize :build_new_account, :if => :new_record?
  
   
   def set_default_role_and_status
@@ -48,6 +49,9 @@ class User < ActiveRecord::Base
     self.status ||= :inactive
   end
   
+  def build_new_account
+    self.account ||= self.build_account()
+  end
   
   def full_name
     "#{first_name} #{last_name}"
