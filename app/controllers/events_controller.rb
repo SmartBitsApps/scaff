@@ -13,6 +13,9 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    #@comments = Comment.joins(:post).where(:posts => { :user_id => @user.id })
+    @brigades = Brigade.joins(:event).where(:brigades => { :event_id => @event.id })
+    #@brigades = Brigades.find_by(event_id: @event)
   end
 
   # GET /events/new
@@ -20,6 +23,7 @@ class EventsController < ApplicationController
     
     @event = @user.events.new
     @event.event_addresses.build
+    
   end
 
   # GET /events/1/edit

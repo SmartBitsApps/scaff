@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721160908) do
+ActiveRecord::Schema.define(version: 20160726160246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brigades", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "position_id"
+    t.integer  "quantity"
+    t.boolean  "visible"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "brigades", ["event_id"], name: "index_brigades_on_event_id", using: :btree
+  add_index "brigades", ["position_id"], name: "index_brigades_on_position_id", using: :btree
 
   create_table "event_addresses", force: :cascade do |t|
     t.integer  "event_id"
@@ -41,6 +53,14 @@ ActiveRecord::Schema.define(version: 20160721160908) do
 
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
+  create_table "positions", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "requirements"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -63,6 +83,8 @@ ActiveRecord::Schema.define(version: 20160721160908) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "brigades", "events"
+  add_foreign_key "brigades", "positions"
   add_foreign_key "event_addresses", "events"
   add_foreign_key "events", "users"
 end

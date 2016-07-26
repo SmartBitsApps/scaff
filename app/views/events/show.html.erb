@@ -48,5 +48,43 @@
   <%= @event.visible %>
 </p>
 
+<% if @brigades.present? %>
+  <p>
+    <strong>Brigády:</strong>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Position</th>
+          <th>Quantity</th>
+          <th>Visible</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @brigades.each do |brigade| %>
+          <tr>
+            <td><%= link_to brigade.event.title, event_path(brigade.event) %></td>
+            <td><%= brigade.position.title %></td>
+            <td><%= brigade.quantity %></td>
+            <td><%= brigade.visible %></td>
+            <td><%= link_to 'Show', brigade %></td>
+            <td><%= link_to 'Edit', edit_brigade_path(brigade) %></td>
+            <td><%= link_to 'Destroy', brigade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+    
+  </p>
+<% else %>
+  <p>Nemáte zadanou žádnou brigádu.</p>
+<% end %>
+<%= link_to "Nová pozice", new_position_path %> | 
+<%= link_to "Nová brigáda", new_brigade_path(@event) %> | 
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

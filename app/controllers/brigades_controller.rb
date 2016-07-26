@@ -14,7 +14,8 @@ class BrigadesController < ApplicationController
 
   # GET /brigades/new
   def new
-    @brigade = Brigade.new
+    
+    @brigade = Brigade.new(:event_id => params[:format])
   end
 
   # GET /brigades/1/edit
@@ -40,6 +41,7 @@ class BrigadesController < ApplicationController
   # PATCH/PUT /brigades/1
   # PATCH/PUT /brigades/1.json
   def update
+    
     respond_to do |format|
       if @brigade.update(brigade_params)
         format.html { redirect_to @brigade, notice: 'Brigade was successfully updated.' }

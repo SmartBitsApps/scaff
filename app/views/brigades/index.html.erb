@@ -16,8 +16,8 @@
   <tbody>
     <% @brigades.each do |brigade| %>
       <tr>
-        <td><%= brigade.event %></td>
-        <td><%= brigade.position %></td>
+        <td><%= link_to brigade.event.title, event_path(brigade.event) %></td>
+        <td><%= brigade.position.title %></td>
         <td><%= brigade.quantity %></td>
         <td><%= brigade.visible %></td>
         <td><%= link_to 'Show', brigade %></td>

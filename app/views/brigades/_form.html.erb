@@ -2,7 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :event %>
+    <%= f.association :event, :value => :event_id, as: :hidden %>
+    
     <%= f.association :position %>
     <%= f.input :quantity %>
     <%= f.input :visible %>

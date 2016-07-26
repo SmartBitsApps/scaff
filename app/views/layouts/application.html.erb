@@ -8,7 +8,11 @@
 </head>
 <body>
   <% if user_signed_in? %> 
-    <header><%= link_to "Odhlásit se", destroy_user_session_path, method: "delete" %></header>
+    <header>
+      <%= link_to "Events", events_path %> | 
+      <%= link_to "Positions", positions_path %> | 
+      <%= link_to "Brigades", brigades_path %> ||| 
+      <%= link_to "Odhlásit se", destroy_user_session_path, method: "delete" %></header>
   <% else %>
     <header><%= link_to "Přihlásit se", new_user_session_path %></header>
   <% end %>
