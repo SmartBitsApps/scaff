@@ -19,16 +19,20 @@ class EventsController < ApplicationController
   def new
     
     @event = @user.events.new
+    @event.event_addresses.build
   end
 
   # GET /events/1/edit
   def edit
+    @event.event_addresses.build
   end
 
   # POST /events
   # POST /events.json
   def create
+    #binding.pry
     @event = @user.events.build(event_params)
+    
 
     respond_to do |format|
       if @event.save
@@ -44,6 +48,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    #binding.pry
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
@@ -72,7 +77,7 @@ class EventsController < ApplicationController
     end
     
     def set_current_user
-      @user = @event.user
+      @user = current_user
     end
     
     def set_managers
@@ -81,6 +86,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:user_id, :title, :description, :start_date, :end_date, :manager, :visible)
+      params.require(:event).permit(:user_id, :title, :description, :start_date, :end_date, :manager, :visible,
+                                    event_addresses_attributes: [:id, :event_id, :street, :street_number, :city])
     end
 end

@@ -10,6 +10,7 @@
       <th>Start date</th>
       <th>End date</th>
       <th>Manager</th>
+      <th>Address</th>
       <th>Visible</th>
       <th colspan="3"></th>
     </tr>
@@ -22,7 +23,8 @@
         <td><%= event.description %></td>
         <td><%= event.start_date %></td>
         <td><%= event.end_date %></td>
-        <td><%= event.manager %></td>
+        <td><%= User.find_by(id: event.manager).full_name %></td>
+        <td><%= link_to event.event_addresses.count, event_path(event) %></td>
         <td><%= event.visible %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>

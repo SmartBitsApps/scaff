@@ -6,10 +6,16 @@
     <%= f.input :description %>
     <%= f.input :start_date %>
     <%= f.input :end_date %>
-    
     <%= f.input :manager do %>
       <%= f.select :manager, @managers.map { |r| [r.full_name, r.id] }, include_blank: true %>
     <% end %>
+    
+    <%= f.simple_fields_for :event_addresses do |address_form| %>
+      <%= address_form.input :street %>
+      <%= address_form.input :street_number %>
+      <%= address_form.input :city %>
+    <% end %>
+    
     <%= f.input :visible %>
   </div>
 

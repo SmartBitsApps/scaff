@@ -24,6 +24,19 @@
   <strong>End date:</strong>
   <%= @event.end_date %>
 </p>
+<% if @event.event_addresses.present? %>
+  <p>
+    <strong>Adresa:</strong>
+    <% @event.event_addresses.each do |ea| %>
+    <p><%= ea.street %></p>
+    <p><%= ea.street_number %></p>
+    <p><%= ea.city %></p>
+    <% end %>
+  </p>
+<% else %>
+  <p>Nemáte zadanou žádnou adresu.</p>
+<% end %>
+
 
 <p>
   <strong>Manager:</strong>

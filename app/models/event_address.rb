@@ -14,9 +14,9 @@
 class EventAddress < ActiveRecord::Base
   belongs_to :event
   
-  validates_presence_of :event_id
-  validates_presence_of :street
-  validates_presence_of :street_number
-  validates_presence_of :city
+  validates_presence_of :event_id, on: :update
+  validates_presence_of :street, on: :update
+  validates_presence_of :street_number, on: :update
+  validates_presence_of :city, on: :update
   
 end
