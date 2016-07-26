@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :brigades
+  resources :positions
   devise_for :users
   
   resources :events

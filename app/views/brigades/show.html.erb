@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @brigade.event %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @brigade.position %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @brigade.quantity %>
+</p>
+
+<p>
+  <strong>Visible:</strong>
+  <%= @brigade.visible %>
+</p>
+
+<%= link_to 'Edit', edit_brigade_path(@brigade) %> |
+<%= link_to 'Back', brigades_path %>
