@@ -1,0 +1,15 @@
+<%= simple_form_for(@subscription) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :brigade, :value => :brigade_id, as: :hidden %>
+    <%= f.association :user, :value => @user.id, as: :hidden %>
+    <%= f.input :approved, input_html: {value: f.object.approved || false }, as: :hidden %>
+    <p>Souhlasím s podmínkami přihlášení k akci.</p>
+    <p><%= @subscription.brigade.position.title + ' na akci ' + @subscription.brigade.event.title%></p>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

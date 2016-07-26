@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :events
+  has_many :subscriptions, dependent: :destroy
+  has_many :brigades, through: :subscriptions
   
   # Devise validates email and password automatically
   validates_presence_of :first_name

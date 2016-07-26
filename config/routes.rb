@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :subscriptions
   resources :brigades
   resources :positions
   devise_for :users

@@ -1,6 +1,7 @@
 class BrigadesController < ApplicationController
   before_action :set_brigade, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
+  
   # GET /brigades
   # GET /brigades.json
   def index
