@@ -1,0 +1,19 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+cs:
+  helpers:
+    actions: "Actions"
+    links:
+      back: "Zpět"
+      cancel: "Zrušit"
+      confirm: "Jste si jisti?"
+      destroy: "Smazat"
+      new: "Nový"
+      edit: "Upravit"
+      show: "Zobrazit"
+    titles:
+      edit: "Uprav"
+      save: "Ulož"
+      new: "New"
+      delete: "Vymaž"

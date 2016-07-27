@@ -1,0 +1,15 @@
+cs:
+  simple_form:
+    "yes": 'Ano'
+    "no": 'Ne'
+    labels:
+      event:
+        id: "Ídéčko"
+        name: "Název"
+        description: "Popis"
+    required:
+      text: 'povinné'
+      mark: '*'
+    error_notification:
+      default_message: "Prosím, zkontrolujte všechny položky:"
+    

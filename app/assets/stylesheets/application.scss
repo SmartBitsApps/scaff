@@ -1,0 +1,57 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+* {
+	box-sizing: border-box;
+}
+
+.container.main {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+body {
+  font-family: "Open Sans",sans-serif;
+  min-height: 100%;
+  width: 100%;
+}
+header, .container, footer {
+  display: block;
+} 
+footer {
+  //position: absolute; /* needed for stacking */
+  position: fixed;
+  //z-index: 1001;
+  width: 100%;
+  background-color: rgba(244, 244, 244, .9);
+  //padding-top: 3rem;
+  bottom: 0;
+  //height: 100px;
+}
+
+footer .copyright {
+  border-top: 1px solid rgb(219, 219, 219);
+  padding-top: 1rem;
+}

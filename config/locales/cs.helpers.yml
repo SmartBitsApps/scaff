@@ -1,0 +1,42 @@
+cs:
+  helpers:
+    actions: "Ovládání"
+    links:
+      new: "Nová akce" 
+      show: "Zobrazit"
+      edit: "Editovat"
+      destroy: "Smazat"
+      cancel: "Zrušit"
+      confirm: "Opravdu chcete tuto položku odstranit?"
+      back: "Zpět"
+  
+  #user.role
+  pending: "Návštěvník"
+  user: "Uživatel"
+  manager: "Manažer"
+  admin: "Administrátor"
+  
+  #user.status
+  banned: "Zakázaný"
+  inactive: "Neaktivní"
+  active: "Aktivní"
+  
+  #user.account.status
+  started: "Nekompletní"
+  completed: "Kompletní"
+  ended: "Zakázáno"
+  
+  #account.edit#
+  #eccount.gender
+  man: "muž"
+  woman: "žena"
+  #account.family_status
+  simple_form:
+    options:
+      account:
+        family_status:
+          single: "svobodný/á"
+          married: "ženatý/vdaná"
+          widow: "vdovec/vdova"
+  
+  

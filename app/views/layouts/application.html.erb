@@ -2,26 +2,29 @@
 <html>
 <head>
   <title>Scaff</title>
+  <%= viewport_meta_tag(:maximum_scale => "1.0") %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <% if user_signed_in? %> 
-    <header>
-      <%= link_to "Subscriptions", subscriptions_path %> | 
-      <%= link_to "Events", events_path %> | 
-      <%= link_to "Positions", positions_path %> | 
-      <%= link_to "Brigades", brigades_path %> ||| 
-      <%= link_to "Odhlásit se", destroy_user_session_path, method: "delete" %></header>
-  <% else %>
-    <header><%= link_to "Přihlásit se", new_user_session_path %></header>
-  <% end %>
+<body class="<%= controller_name %> <%= action_name%>">
   
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <%= render 'layouts/header' %>
+    
+    <div class="container main">
+      <div class="row-main">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="flash"><%= bootstrap_flash %></div>
+        </div>  
+        
+        <%= yield :sidebar %>
+        <%= yield %>
+        
+      </div><!--/row-->
+    </div> <!-- /container -->
+    
+    <%= render 'layouts/footer' %>
   
-  <%= yield %>
-
-</body>
+  </body>
 </html>
+  

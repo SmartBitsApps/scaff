@@ -1,19 +1,37 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :first_name, required: false, autofocus: true %>
-    <%= f.input :last_name, required: false %>
-    <%= f.input :email, required: false %>
-    <%= f.input :password, required: false, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: false %>
+<div class="form-wrapper">
+  <div class="form-login col-xs-12 col-md-6 col-md-offset-3">
+      <div class="form-title">
+        <h3>Registrace do systému</h3>
+      </div>
+      <hr>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <br>
+        <div class="form-inputs">
+          
+          <%= f.input :first_name, label: "Jméno",  required: false, autofocus: true %>
+          <%= f.input :last_name, label: "Příjmení", required: false %>
+          <%= f.input :email, label: "Emailová adresa", required: false %>
+          <%= f.input :password, label: "Heslo", required: false, hint: ("#{@minimum_password_length} znaků je minimum" if @minimum_password_length) %>
+          <%= f.input :password_confirmation, label: "Potvrzení hesla", required: false %>
+        </div>
+        <br>
+        <div class="form-actions">
+          <%= f.button :submit, "Registrovat se", class: "btn btn-lg btn-primary btn-block" %>
+        </div>
+        <div class="links">
+          <br>
+          <p>Máte už u nás účet? </p>
+          <%= link_to "Můžete se přihlásit", new_user_session_path, class: "btn btn-default btn-success" %>
+          
+        </div>
+        
+        
+        <br>
+      <% end %>
+      <div class="form-links">
+        <%= render "devise/shared/links" %>
+      </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+      

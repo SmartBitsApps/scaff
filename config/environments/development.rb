@@ -39,6 +39,30 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
+  # better_errors settings
+  BetterErrors::Middleware.allow_ip! ENV['TRUSTED_IP'] if ENV['TRUSTED_IP']
+  config.web_console.whitelisted_ips = ENV['TRUSTED_IP']
+ 
   # Devise mailer
   config.action_mailer.default_url_options = { host: ENV['MAIL_HOST_DEV'] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    #domain: 'heroku.com',
+    address: 'smtp.gmail.com',
+    port: 587,
+    authentication: :plain,
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['GMAIL_PASSWORD'],
+    enable_starttls_auto: true
+  }
+  
+  # i18n translation change -> :cs
+  config.i18n.available_locales = :cs
+  config.i18n.default_locale = :cs
+  
+  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
+  # the I18n.default_locale when a translation can not be found)
+  config.i18n.fallbacks = false
+  
 end

@@ -4,13 +4,21 @@ ruby '2.3.1'
 
 # for authnetication
 gem 'devise', '~> 4.1', '>= 4.1.1'
-gem 'simple_form'
-gem 'annotate', '~> 2.7', '>= 2.7.1'
 
 ## for design
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'bootstrap-sass-extras', '~> 0.0.2'
 gem 'font-awesome-sass', '~> 4.6', '>= 4.6.2'
+
+## for translations
+gem 'devise-i18n'
+gem 'rails-i18n', '~> 4.0', '>= 4.0.8'
+
+#s# for forms
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.37'
+gem 'momentjs-rails', '~> 2.11', '>= 2.11.1'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -43,19 +51,31 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
 group :development, :test do
   gem 'pry', '~> 0.10.4'
   gem 'pry-rails', '~> 0.3.4'
   gem 'pry-nav', '~> 0.2.4'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  #gem 'byebug'
+  #gem 'byebug', '~> 8.2', '>= 8.2.2'
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
+  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
+  gem 'capybara', '~> 2.6', '>= 2.6.2'
+  # gem 'capybara-webkit', '~> 1.8'
+  gem 'factory_girl_rails', '~> 4.6'
+  gem 'faker', '~> 1.6', '>= 1.6.3'
 end
 
 group :development do
+  gem 'annotate'
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 3.1', '>= 3.1.1'
+  gem 'spring', '~> 1.6', '>= 1.6.4'
+  gem 'quiet_assets', '~> 1.1'
+end
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+group :production do
+  gem 'rails_12factor', '~> 0.0.3'
+  gem 'puma', '~> 3.2'
 end
 

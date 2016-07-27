@@ -2,24 +2,41 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.input :manager do %>
+    <%= f.input :title, label: 'Název', required: false %>
+    <%= f.input :description, label: 'Popis', required: false %>
+    <%= f.input :start_date, label: 'Začátek', required: false, input_html: { id: 'datetimepicker' } %>
+    <%= f.input :end_date, label: 'Konec', required: false, input_html: { id: 'datetimepicker2' } %>
+    <%= f.input :manager, label: 'Manažer', required: false do %>
       <%= f.select :manager, @managers.map { |r| [r.full_name, r.id] }, include_blank: true %>
     <% end %>
-    
+    <br>
+    <hr>
+    <h3>Adresa :</h3>
+    <br>
     <%= f.simple_fields_for :event_addresses do |address_form| %>
-      <%= address_form.input :street %>
-      <%= address_form.input :street_number %>
-      <%= address_form.input :city %>
+      <%= address_form.input :street, label: 'Ulice', required: false %>
+      <%= address_form.input :street_number, label: 'Číslo popisné', required: false %>
+      <%= address_form.input :city, label: 'Město', required: false %>
     <% end %>
     
-    <%= f.input :visible %>
+    <%= f.input :visible, label: 'Viditelné', required: false %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Odeslat', class: "btn btn-primary btn-lg btn-block" %>
   </div>
+  
+  <script>
+    $(function () {
+      $('#datetimepicker').datetimepicker({
+        locale: 'cs',
+        stepping: 30,
+        useCurrent('day')
+      });
+      $('#datetimepicker2').datetimepicker({
+        locale: 'cs',
+        stepping: 30
+      });
+    });
+  </script>
 <% end %>
