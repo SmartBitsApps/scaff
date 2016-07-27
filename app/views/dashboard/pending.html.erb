@@ -1,0 +1,9 @@
+<% if @user.account.status == 1 %>
+    <h1>Doplňte všechny registrační údaje</h1>
+    <%= link_to "Dokončit registraci", edit_user_account_path(current_user), class: "btn btn-default" %>
+<% else %>
+    <h1>Děkujeme za vyplnění všech údajů registrace</h1>
+    <h3>Váš účet bude co nejdříve schválen, bude te o tom informováni emailem.</h3>
+    <h4>Poté se již můžete přihlašovat k pracovním nabídkám</h4>
+    
+<% end %>

@@ -1,13 +1,16 @@
-<%= simple_form_for(@position) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :requirements %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+      
+      <%= simple_form_for(@position) do |f| %>
+        <%= f.error_notification %>
+      
+        <div class="form-inputs">
+          <%= f.input :title, label: 'Název', required: false %>
+          <%= f.input :description, label: 'Popis', required: false %>
+          <%= f.input :requirements, label: 'Požadavky', required: false %>
+        </div>
+      
+        <div class="form-actions">
+          <%= f.button :submit, 'Uložit', class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+      <% end %>
+      

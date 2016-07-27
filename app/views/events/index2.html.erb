@@ -1,4 +1,4 @@
-<h1>Přehled všech pracovních nabídek</h1>
+<h1>Listing Events</h1>
 
 <table class="table table-sm">
   <thead>
@@ -23,9 +23,9 @@
         <td><%= User.find_by(id: event.manager).full_name %></td>
         <td><%= link_to event.event_addresses.count, event_path(event) %></td>
         <td><%= event_brigade_sum(event) %></td>
-        <td><%= link_to 'Detail', event %></td>
-        <td><%= link_to 'Upravit', edit_event_path(event) %></td>
-        <td><%= link_to 'Smazat', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'Nová nabídka', new_event_path, class: "btn btn-primary" %>
+<%= link_to 'New Event', new_event_path, class: "btn btn-primary" %>

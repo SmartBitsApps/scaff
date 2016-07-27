@@ -30,7 +30,7 @@ class BrigadesController < ApplicationController
 
     respond_to do |format|
       if @brigade.save
-        format.html { redirect_to @brigade, notice: 'Brigade was successfully created.' }
+        format.html { redirect_to @brigade, notice: 'Nabídka byla úspěšně vytvořena.' }
         format.json { render :show, status: :created, location: @brigade }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class BrigadesController < ApplicationController
     
     respond_to do |format|
       if @brigade.update(brigade_params)
-        format.html { redirect_to @brigade, notice: 'Brigade was successfully updated.' }
+        format.html { redirect_to @brigade, notice: 'Nabídka byla úspěšně upravena.' }
         format.json { render :show, status: :ok, location: @brigade }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class BrigadesController < ApplicationController
   def destroy
     @brigade.destroy
     respond_to do |format|
-      format.html { redirect_to brigades_url, notice: 'Brigade was successfully destroyed.' }
+      format.html { redirect_to brigades_url, notice: 'Nabídka byla úspěšně smazána.' }
       format.json { head :no_content }
     end
   end
