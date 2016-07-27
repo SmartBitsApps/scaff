@@ -1,16 +1,25 @@
-<h2>Resend unlock instructions</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.full_error :unlock_token %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+<div class="form-wrapper">
+  <div class="form-login col-xs-12 col-md-6 col-md-offset-3">
+      <div class="form-title">
+        <h3>Znovu zaslat informace k odblokování</h3>
+      </div>
+      <hr>
+    <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+      <%= f.full_error :unlock_token %>
+      <br>
+      <div class="form-inputs">
+        <%= f.input :email, label: "Emailová adresa", required: false, autofocus: true %>
+      </div>
+    
+      <div class="form-actions">
+        <%= f.button :submit, "Zaslat odblokovací email", class: "btn btn-lg btn-primary btn-block" %>
+      </div>
+    <% end %>
+    <br>
+    <div class="form-links">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Resend unlock instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+    
