@@ -1,6 +1,16 @@
-<h1>Editing Account</h1>
+<div class="form-wrapper">
+  <div class="form-login col-md-6 col-md-offset-3">
+    <br>
+    <h2>Upravit účet: <%= @account.user.full_name %> </h2>
+    
+    <br>
+    <hr>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @account %> |
-<%= link_to 'Back', accounts_path %>
+    
+    <%= render 'form' %>
+    
+    <%= link_to 'Detail', @account %> |
+    <%= link_to 'Zpět', accounts_path %>
+  </div>
+</div>
+    

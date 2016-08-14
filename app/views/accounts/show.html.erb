@@ -1,79 +1,82 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @account.user %>
-</p>
-
-<p>
-  <strong>Degree before:</strong>
-  <%= @account.degree_before %>
-</p>
-
-<p>
-  <strong>Degree after:</strong>
-  <%= @account.degree_after %>
-</p>
-
-<p>
-  <strong>Birth name:</strong>
-  <%= @account.birth_name %>
-</p>
-
-<p>
-  <strong>Birth date:</strong>
-  <%= @account.birth_date %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @account.gender %>
-</p>
-
-<p>
-  <strong>Birth place:</strong>
-  <%= @account.birth_place %>
-</p>
-
-<p>
-  <strong>Birth number:</strong>
-  <%= @account.birth_number %>
-</p>
-
-<p>
-  <strong>Nationality:</strong>
-  <%= @account.nationality %>
-</p>
-
-<p>
-  <strong>Family status:</strong>
-  <%= @account.family_status %>
-</p>
-
-<p>
-  <strong>Bank acc:</strong>
-  <%= @account.bank_acc %>
-</p>
-
-<p>
-  <strong>Insurance:</strong>
-  <%= @account.insurance %>
-</p>
-
-<p>
-  <strong>Occupation:</strong>
-  <%= @account.occupation %>
-</p>
-
-<p>
-  <strong>Terms:</strong>
-  <%= @account.terms %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @account.status %>
-</p>
-
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<div class="form-wrapper">
+  <div class="form-login col-md-6 col-md-offset-3">
+    <br><br>
+    <p>
+      <h3><%= @account.user.full_name %></h3>
+    </p>
+    <br>
+    <hr>
+    <p>
+      <strong>Titul před jménem:</strong>
+      <%= @account.degree_before %>
+    </p>
+    
+    <p>
+      <strong>Titul za jménem:</strong>
+      <%= @account.degree_after %>
+    </p>
+    
+    <p>
+      <strong>Rodné příjmení:</strong>
+      <%= @account.birth_name %>
+    </p>
+    
+    <p>
+      <strong>Datum narození:</strong>
+      <%= @account.birth_date %>
+    </p>
+    
+    <p>
+      <strong>Pohlaví:</strong>
+      <%= @account.gender %>
+    </p>
+    
+    <p>
+      <strong>Místo narození:</strong>
+      <%= @account.birth_place %>
+    </p>
+    
+    <p>
+      <strong>Rodné číslo:</strong>
+      <%= @account.birth_number %>
+    </p>
+    
+    <p>
+      <strong>Národnost:</strong>
+      <%= @account.nationality %>
+    </p>
+    
+    <p>
+      <strong>Rodinný stav:</strong>
+      <%= @account.family_status %>
+    </p>
+    
+    <p>
+      <strong>Bankovní účet:</strong>
+      <%= @account.bank_acc %>
+    </p>
+    
+    <p>
+      <strong>Zdravotní pojišťovna:</strong>
+      <%= @account.insurance %>
+    </p>
+    
+    <p>
+      <strong>Zam.poměr:</strong>
+      <%= @account.occupation %>
+    </p>
+    
+    <p>
+      <strong>Podmínky použití:</strong>
+      <%= @account.terms %>
+    </p>
+    
+    <p>
+      <strong>Status:</strong>
+      <%= @account.status %>
+    </p>
+    
+    <%= link_to 'Upravit', edit_account_path(@account) %> |
+    <%= link_to 'Zpět', accounts_path %>
+  </div>
+</div>

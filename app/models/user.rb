@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
           :recoverable, :rememberable, :trackable, :validatable
   
   has_one :account, dependent: :destroy   
-  has_many :events, dependent: :nullify
+  has_many :events, dependent: :nullify # TODO: check if its right dependent
   has_many :subscriptions, dependent: :destroy
   has_many :brigades, through: :subscriptions
   

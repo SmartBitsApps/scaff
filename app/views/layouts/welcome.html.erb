@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "LP" %></title>
+    <%= viewport_meta_tag(:maximum_scale => "1.0", :user_scalable => "no") %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name%>">
+
+    
+    
+    <div class="background">
+      <header class="clearfix">
+        <div class="wrapper_wide">
+          <%= link_to "Lidé a Příležitosti", root_path, id: "logo" %>
+          <nav>
+            <ul>
+              <% unless user_signed_in? %>
+                <li><%= link_to "Přihlášení", new_user_session_path %></li>
+                <li><%= link_to "Registrace", new_user_registration_path %></li>
+              <% else %>
+                <li><%= link_to "Odhlásit se", destroy_user_session_path, method: :delete %></li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <div class="wrapper_skinny">
+        <h1>Najdi tu správnou práci, nebo brigádu !<br> <span>Právě teď !</span></h1>
+        
+        <%= link_to "Registrovat se", new_user_registration_path, class: "btn btn-primary" %>
+        <%= link_to "Prohlídnout nabídky", root_path, class: "btn btn-default" %>
+        <p>Registrace je zdarma.</p>
+      </div>
+    </div> 
+  </body>
+</html>

@@ -5,6 +5,9 @@ ruby '2.3.1'
 # for authnetication
 gem 'devise', '~> 4.1', '>= 4.1.1'
 
+# for steps forms
+gem 'wicked', '~> 1.3'
+
 ## for design
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'bootstrap-sass-extras', '~> 0.0.2'

@@ -16,10 +16,18 @@
 @import 'bootstrap-datetimepicker';
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
+@import "accounts";
+@import "welcome";
 
 * {
 	box-sizing: border-box;
+}
+
+.flash {
+  position: absolute;
+  display: block;
+  width: 100%;
+  opacity: 0.95;
 }
 
 .container.main {

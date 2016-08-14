@@ -1,6 +1,6 @@
-<% if @user.account.status == 1 %>
+<% if @user.account.status == "started" %>
     <h1>Doplňte všechny registrační údaje</h1>
-    <%= link_to "Dokončit registraci", edit_user_account_path(current_user), class: "btn btn-default" %>
+    <%= link_to "Dokončit registraci", after_register_path(:add_birth), class: "btn btn-default" %>
 <% else %>
     <h1>Děkujeme za vyplnění všech údajů registrace</h1>
     <h3>Váš účet bude co nejdříve schválen, bude te o tom informováni emailem.</h3>

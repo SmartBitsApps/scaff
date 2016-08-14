@@ -1,3 +1,175 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$white: #FFFFFF;
+$highlight: #EE7964;
+$dark: #2C3135;
+$light: #EDEFF5;
+
+body {
+  //overflow:hidden;
+  //overflow-y:hidden;
+  //min-height: 100%;
+  //height: 100vh;
+  font-family: "Open Sans",sans-serif;
+}
+
+.background::-webkit-scrollbar { 
+    display: none; 
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(
+  //0,61,117
+      //rgba(0, 15, 200, 0.5),
+      //rgba(0, 15, 200, 0.5)
+      rgba(0, 0, 20, 0.5),
+      rgba(0, 0, 20, 0.5)
+    ), url('bulb.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  //-webkit-background-size: cover;
+  //-moz-background-size: cover;
+  //-o-background-size: cover;
+  //background-size: 100%;
+  
+  
+  //height: 100%;
+  height: 100vh;
+  //background-image: image-url('welcome_background.jpg');
+  //background-size: cover;
+  //background-position: center;
+  text-align: center;
+  header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+
+
+header {
+  color: $white;
+  //padding: 3rem 0;
+  #logo {
+    float: left;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $white;
+    text-decoration: none;
+  }
+  nav {
+    float: right;
+    ul {
+      list-style: none;
+      margin: 0;
+      li {
+        display: inline;
+        margin-left: 2.5rem;
+        position: relative;
+        a {
+          color: $white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.welcome.index {
+  padding-top: 0px;
+  .container {
+    width: 100%;
+    padding: 0px;
+  }
+}
+
+// TODO: upravit
+.welcome.index .navbar,
+.welcome.index footer {
+  display: none;
+}
+
+.button_block {
+  display: block;
+  margin: 0 auto;
+}
+
+.button_highlight {
+  background: $highlight;
+  transition: background .4s ease-in-out;
+  &:hover {
+   background: darken($highlight, 7.5%);
+  }
+}
+
+.button_white {
+  background: $white;
+  color: $dark;
+  transition: background .4s ease-in-out;
+  &:hover {
+   background: darken($white, 7.5%);
+  }
+}
+
+// TODO: only for welcome page
+.wrapper_wide {
+  width: 90%;
+  margin: 0 auto;
+  #logo {
+  	letter-spacing: 0.3rem;
+  }
+  nav ul li a {
+  	text-decoration: none;
+  	&:hover {
+  		font-weight: 700;
+  		color: $white;
+  	}
+  }
+  
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.wrapper_skinny {
+  //width: 60%;
+  //height: 100%;
+  position: relative;
+  top: 40%;
+  transform: perspective(1px) translateY(-50%);
+  //margin: 0 auto;
+  //padding-top: 20%vh;
+  //height: 100vh;
+  //background: black;
+  h1 {
+    color: $white;
+    font-size: 3.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 6rem;
+  	font-weight: 700;
+  	padding-bottom: 4rem;
+  }
+  a {
+  	margin-right: 2rem;
+  }
+  .btn.btn-primary {
+  	font-weight: 700;
+  }
+  p {
+  	color: $white;
+  	margin-top: 2rem;
+  }
+}
+
+.responsive_break {
+  white-space: nowrap;
+}

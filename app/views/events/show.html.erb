@@ -57,7 +57,6 @@
               <th>Pozice</th>
               <th>Počet</th>
               <th>K dispozici</th>
-              <th>Viditelné</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -69,7 +68,6 @@
                 <td><%= brigade.position.title %></td>
                 <td><%= brigade.quantity %></td>
                 <td><%= available_positions(brigade) %></td>
-                <td><%= brigade.visible %></td>
                 <td><%= link_to 'Detail', brigade %></td>
                 
                 <td><%= link_to 'Přihlásit se', new_subscription_path(brigade) %></td>

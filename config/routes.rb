@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   resources :subscriptions
   resources :brigades
   resources :positions
-  devise_for :users
+  
+  devise_for :users, :controllers => { :registrations => "registrations" }
+  resources :after_register
   
   resources :events
   resources :event_addresses  
+  
   
   
   #authenticated :user do
