@@ -22,11 +22,11 @@ body {
 .background {
   position: relative;
   width: 100%;
-  background: linear-gradient(
-      rgba(0, 0, 20, 0.5),
-      rgba(0, 0, 20, 0.5)
-    ), url("bulb.jpg") no-repeat center center fixed;
-  //background: url("https://www.dropbox.com/s/ayggp3fv2rih5p7/bulb.jpg") no-repeat center center fixed;   
+  //background: linear-gradient(
+      //rgba(0, 0, 20, 0.5),
+      //rgba(0, 0, 20, 0.5)
+    //), url("bulb.jpg") no-repeat center center fixed;
+  background: url("https://dl.dropboxusercontent.com/s/ayggp3fv2rih5p7/bulb.jpg") no-repeat center center fixed;   
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
