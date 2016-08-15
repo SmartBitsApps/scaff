@@ -53,7 +53,20 @@ body {
 }
 header, .container, footer {
   display: block;
-} 
+}
+
+
+#logo {
+  float: left;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $white;
+  text-decoration: none;
+  letter-spacing: 1px;
+  margin-top: 1.4rem;
+  margin-left: 2rem;
+}
+
 footer {
   //position: absolute; /* needed for stacking */
   position: fixed;

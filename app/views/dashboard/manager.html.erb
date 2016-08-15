@@ -1,5 +1,6 @@
-<h1>Manager dashboard view page.</h1>
+<h1>Manager dashboard</h1>
   <%# if !@registrations.ids %>
+  <br>
     <p>Čekající na schválení :</p>
     <% for registration in @registrations %>
       <li><%= registration.user.full_name %> | <%= link_to 'Schválit registraci', account_path(registration, account: {status: :completed}), method: :put %></li>
