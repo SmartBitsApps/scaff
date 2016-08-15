@@ -1,59 +1,58 @@
-<%= simple_form_for(@account) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.association :user, :value => :user_id, as: :hidden %>
+<div class="form-wrapper">
+  <div class="form-login col-md-6 col-md-offset-3">
+    <br>
+    <h2>Step 1</h2>
+    <hr>
+    <br>
+    <%= simple_form_for(@account, :url => wizard_path, :method => :put) do |f| %>
+      <%= f.error_notification %>
     
-    <%= f.input :degree_before, label: 'Titul před', required: false do %>
-      <%= f.select(:degree_before, Account.degree_befores.keys.map {|db| [db.titleize,db]}, include_blank: true) %>
+      <div class="form-inputs">
+        <%= f.association :user, :value => :user_id, as: :hidden %>
+        
+        <%= f.input :degree_before, label: 'Titul před', required: false do %>
+          <%= f.select(:degree_before, Account.degree_befores.keys.map {|db| [db.titleize,db]}, include_blank: true) %>
+        <% end %>
+        
+        <%= f.input :degree_after, label: 'Titul za', required: false do %>
+          <%= f.select(:degree_after, Account.degree_afters.keys.map {|da| [da.titleize,da]}, include_blank: true) %>
+        <% end %>
+        
+        <%= f.input :birth_name, label: 'Rodné příjmení', required: false %>
+        <%= f.input :birth_date, label: 'Datum narození', required: false, input_html: { id: 'datetimepicker3' } %>
+        
+        <%= f.input :gender, :label => "Pohlaví", as: :radio_buttons, collection: ['muž', 'žena'], wrapper: :vertical_radio_and_checkboxes %>
+        
+        <%= f.input :birth_place, label: 'Místo narození', required: false %>
+        <%= f.input :birth_number, label: 'Rodné číslo', required: false %>
+        <%= f.input :nationality, label: 'Národnost', required: false %>
+      </div>
+    
+      <div class="form-actions">
+        <%= f.submit "Další", class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+      
+      <%= link_to "Přeskočit", next_wizard_path %>
+      
     <% end %>
-    
-    <%= f.input :degree_after, label: 'Titul za', required: false do %>
-      <%= f.select(:degree_after, Account.degree_afters.keys.map {|da| [da.titleize,da]}, include_blank: true) %>
-    <% end %>
-    
-    <%= f.input :birth_name, label: 'Rodné příjmení', required: false %>
-    <%= f.input :birth_date, label: 'Datum narození', required: false, input_html: { id: 'datetimepicker3' } %>
-    
-    <%= f.input :gender, :label => "Pohlaví", as: :radio_buttons, collection: ['muž', 'žena'], wrapper: :vertical_radio_and_checkboxes %>
-    
-    <%= f.input :birth_place, label: 'Místo narození', required: false %>
-    <%= f.input :birth_number, label: 'Rodné číslo', required: false %>
-    <%= f.input :nationality, label: 'Národnost', required: false %>
-    
-    <%= f.input :family_status, label: 'Rodinný stav', required: false do %>
-      <%= f.select(:family_status, Account.family_statuses.keys.map {|fs| [fs.titleize,fs]}, include_blank: true) %>
-    <% end %>
-    
-    <%= f.input :bank_acc, label: 'Číslo bankovního účtu', required: false %>
-    <%= f.input :insurance, label: 'Zdravotní pojišťovna', required: false %>
-    <%= f.input :occupation, label: 'Zaměstnanecký poměr', required: false %>
-    <%= f.input :terms, as: :boolean, checked_value: true, unchecked_value: false, label: 'Souhlas s podmínkami použití' %>
-    
-    
   </div>
+</div>    
 
-  <div class="form-actions">
-    <%= f.button :submit, "Uložit změny", class: "btn btn-primary btn-lg btn-block" %>
-  </div>
-  
-  <script>
-    $(function () {
-      $('#datetimepicker3').datetimepicker({
-        locale: 'cs',
-        viewMode: 'years',
-        //minDate:`1/1/1920`,
-        //maxDate:`1/1/2002`,
-        //yearRange: "-15:-80",
-        format: 'DD.MM.YYYY'
-      });
-      $('#datetimepicker4').datetimepicker({
-        locale: 'cs',
-        stepping: 30
-      });
+<script>
+  $(function () {
+    $('#datetimepicker3').datetimepicker({
+      locale: 'cs',
+      viewMode: 'years',
+      //minDate:`1/1/1920`,
+      //maxDate:`1/1/2002`,
+      //yearRange: "-15:-80",
+      format: 'DD.MM.YYYY'
     });
-  </script>
-  
-  
-<% end %>
-
+    $('#datetimepicker4').datetimepicker({
+      locale: 'cs',
+      stepping: 30
+    });
+  });
+</script>
+    
+    

@@ -28,13 +28,11 @@
       <p>
         <strong>Adresa:</strong>
         <% @event.event_addresses.each do |ea| %>
-        <p><%= ea.street %></p>
-        <p><%= ea.street_number %></p>
-        <p><%= ea.city %></p>
+        <p><%= ea.street %> <%= ea.street_number %>, <%= ea.city %></p>
         <% end %>
       </p>
     <% else %>
-      <p>Nemáte zadanou žádnou adresu.</p>
+      <p>Adresa není k dispozici.</p>
     <% end %>
     
     
@@ -53,7 +51,7 @@
       <table class="table table-sm">
           <thead>
             <tr>
-              <th>Akce</th>
+              
               <th>Pozice</th>
               <th>Počet</th>
               <th>K dispozici</th>
@@ -64,7 +62,7 @@
           <tbody>
             <% @brigades.each do |brigade| %>
               <tr>
-                <td><%= link_to brigade.event.title, event_path(brigade.event) %></td>
+                <%#= link_to brigade.event.title, event_path(brigade.event) %>
                 <td><%= brigade.position.title %></td>
                 <td><%= brigade.quantity %></td>
                 <td><%= available_positions(brigade) %></td>
@@ -81,10 +79,12 @@
     <% else %>
       <p>Nemáte zadanou žádnou brigádu.</p>
     <% end %>
-    <%= link_to "Nová pozice", new_position_path %> | 
-    <%= link_to "Nová brigáda", new_brigade_path(@event) %> | 
+    <% if current_user.role == "admin" || current_user.role == "manager" %>
+      <%= link_to "Nová pozice", new_position_path %> | 
+      <%= link_to "Nová brigáda", new_brigade_path(@event) %> | 
     
-    <%= link_to 'Upravit', edit_event_path(@event) %> |
+      <%= link_to 'Upravit', edit_event_path(@event) %> | 
+    <% end %>
     <%= link_to 'Zpět', events_path %>
   </div>
 </div>

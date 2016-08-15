@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all #.where(visible: true)
+    @events = Event.all.order(created_at: :desc) #.where(visible: true)
     
   end
 

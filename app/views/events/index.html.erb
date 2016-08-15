@@ -20,12 +20,15 @@
         <td><%= event.description %></td>
         <td><%= event.start_date %></td>
         <td><%= event.end_date %></td>
+        <!-- TODO: check before delete user if he is event manager + add link_to for message and phone contact -->
         <td><%= User.find_by(id: event.manager).full_name %></td>
         <td><%= link_to event.event_addresses.count, event_path(event) %></td>
         <td><%= event_brigade_sum(event) %></td>
         <td><%= link_to 'Detail', event %></td>
-        <td><%= link_to 'Upravit', edit_event_path(event) %></td>
-        <td><%= link_to 'Smazat', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.role == "admin" || current_user.role == "manager" %>
+          <td><%= link_to 'Upravit', edit_event_path(event) %></td>
+          <td><%= link_to 'Smazat', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
     

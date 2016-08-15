@@ -1,1 +1,26 @@
 <h1>Manager dashboard view page.</h1>
+  <%# if !@registrations.ids %>
+    <p>Čekající na schválení :</p>
+    <% for registration in @registrations %>
+      <li><%= registration.user.full_name %> | <%= link_to 'Schválit registraci', account_path(registration, account: {status: :completed}), method: :put %></li>
+      
+          <%#= link_to "Schválit", update_account_path(account:{status: 2}), method: :put %>
+          <%#= link_to 'Schválit registraci uživatele', account_path(registration, account: {status: :completed}), method: :put %>
+          <%#= link_to "Schválit registraci uživatele", :controller => :account, :action => :approve_registration, :remote => true, method: :post %>
+          <%#= link_to "Schválit registraci", account_approve_path(registration.id) %>
+      
+    <% end %>
+  <%# else %>
+      <!--<p>žádná neschválená registrace</p>  -->
+  <%# end %>
+
+
+<br>
+<hr>
+<br>
+
+<p>Schválení uživatelé :</p>
+<% for approved_account in @approved_accounts %>
+    <li><%= approved_account.user.full_name %> | <%= link_to 'Potvrdit uživatele', edit_user_registration_path(approved_account.id, user: {role: :user}), method: :put %></li>
+    
+<% end %>

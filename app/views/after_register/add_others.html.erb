@@ -1,19 +1,34 @@
 <div class="form-wrapper">
-  <div class="form-login col-md-4 col-md-offset-4">
-    <br><br>
-    <h4>Pro vygenererování smlouvy je nutné<br>
-    vyplnit všechny položky registrace</h4>
-    
+  <div class="form-login col-md-6 col-md-offset-3">
+    <br>
+    <h2>Step 2</h2>
+    <hr>
     <br>
     
-    <%= simple_form_for(@user, :url => wizard_path, :method => :put) do |f| %>
+    <%= simple_form_for(@account, :url => wizard_path, :method => :put) do |f| %>
+      <%= f.error_notification %>
     
-        <%= f.input :birth_name, :label => "Rodné příjmení", required: false %>
+      <div class="form-inputs">
         
-        <%= f.submit "Další", :class => "btn btn-primary" %>
+        <%= f.input :family_status, label: 'Rodinný stav', required: false do %>
+          <%= f.select(:family_status, Account.family_statuses.keys.map {|fs| [fs.titleize,fs]}, include_blank: true) %>
+        <% end %>
+        
+        <%= f.input :bank_acc, label: 'Číslo bankovního účtu', required: false %>
+        <%= f.input :insurance, label: 'Zdravotní pojišťovna', required: false %>
+        <%= f.input :occupation, label: 'Zaměstnanecký poměr', required: false %>
+        <%= f.input :terms, as: :boolean, checked_value: true, unchecked_value: false, label: 'Souhlas s podmínkami použití' %>
+        
+        
+      </div>
     
+      <div class="form-actions">
+        <%= f.button :submit, "Uložit změny", class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+      
+      <%= link_to "Přeskočit", next_wizard_path %>
+      
     <% end %>
-    
-    <%= link_to "Přeskočit", next_wizard_path %>
   </div>
-</div>
+</div>    
+

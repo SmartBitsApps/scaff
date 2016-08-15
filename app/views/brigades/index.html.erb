@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Brigades</h1>
+<h1>Přehled všech brigád</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Event</th>
-      <th>Position</th>
-      <th>Quantity</th>
-      <th>Visible</th>
+      <th>Akce</th>
+      <th>Pozice</th>
+      <th>Počet</th>
+      <th>Viditelné</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +20,11 @@
         <td><%= brigade.position.title %></td>
         <td><%= brigade.quantity %></td>
         <td><%= brigade.visible %></td>
-        <td><%= link_to 'Show', brigade %></td>
-        <td><%= link_to 'Edit', edit_brigade_path(brigade) %></td>
-        <td><%= link_to 'Destroy', brigade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detail', brigade %></td>
+        <% if current_user.role == "admin" || current_user.role == "manager" %> | 
+          <td><%= link_to 'Upravit', edit_brigade_path(brigade) %></td> | 
+          <td><%= link_to 'Smazat', brigade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Brigade', new_brigade_path %>
+<%= link_to 'Nová pacovní nabídka', new_brigade_path %>

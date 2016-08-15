@@ -15,10 +15,17 @@ class DashboardController < ApplicationController
           render "dashboard/admin"
         when "manager"
           @user = current_user
+          #users with role "pending"
+          @users = User.all.where(role: 0)
+          #accounts for users with role "pending"
+          @pending_accounts = Account.joins(:user).where(:accounts => { :user_id => @users.ids })
+          #accounts where status = "ended"
+          @registrations = @pending_accounts.all.where(status: 1)
+          @approved_accounts = Account.all.where(status: 2)
           render "dashboard/manager"
         when "user"
           @user = current_user
-          
+          @my_subscriptions = Subscription.joins(:user).where(:subscriptions => { :user_id => @user.id })
           render "dashboard/user"  
         when "pending"
           @user = current_user

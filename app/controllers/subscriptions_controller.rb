@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
-    @subscriptions = Subscription.all.order("created_at DESC")
+    @subscriptions = Subscription.all.order(created_at: :desc)
   end
 
   # GET /subscriptions/1

@@ -5,7 +5,7 @@ class BrigadesController < ApplicationController
   # GET /brigades
   # GET /brigades.json
   def index
-    @brigades = Brigade.all
+    @brigades = Brigade.all.order(created_at: :desc)
   end
 
   # GET /brigades/1

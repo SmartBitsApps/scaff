@@ -5,7 +5,7 @@ class EventAddressesController < ApplicationController
   # GET /event_addresses
   # GET /event_addresses.json
   def index
-    @event_addresses = EventAddress.all
+    @event_addresses = EventAddress.all.order(created_at: :desc)
   end
 
   # GET /event_addresses/1
