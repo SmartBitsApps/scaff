@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   get 'dashboard' => 'dashboard#index'
-  resources :accounts
+  resources :accounts do
+    member do
+      put :approve_registration
+    end
+  end
   resources :subscriptions
   resources :brigades
   resources :positions

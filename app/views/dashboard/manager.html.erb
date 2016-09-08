@@ -22,6 +22,23 @@
 
 <p>Schválení uživatelé :</p>
 <% for approved_account in @approved_accounts %>
-    <li><%= approved_account.user.full_name %> | <%= link_to 'Potvrdit uživatele', edit_user_registration_path(approved_account.id, user: {role: :user}), method: :put %></li>
-    
+  <% if approved_account.user.role == "pending" #TODO: add this to controller!!# %> 
+    <li><%= approved_account.user.full_name %> | <%= approved_account.user.role %> | <%= link_to 'Potvrdit uživatele', approved_account, :method => :approve_registration, :remote=>true %></li>
+                                                      <%#= link_to 'Vote', post, :method => :add_point, :remote=>true %>
+                                                      <%#= link_to 'Potvrdit uživatele', edit_user_registration_path(approved_account.id, user: {role: :user}), method: :put %>
+                                                      <%#= form_tag account_approve_registration_path(approved_account.id), method: :put, :remote => true do %>
+                                                        <%#= hidden_field_tag :user_id, approved_account.user_id %>
+                                                        <%#= submit_tag 'Schval mě' %>
+                                                      <%# end %>
+                                                      <%= form_tag approve_registration_account_path(approved_account), method: :put, :remote => true do %>
+                                                        <%#= hidden_field_tag :account_id, approved_account.id %>
+                                                        <%= hidden_field_tag :user_id, approved_account.user_id %>
+                                                        <%= submit_tag 'Schval mě' %>
+                                                      <% end %>
+  <% end %>
+<% end %>
+
+<p>Role : user :</p>
+<% for role_user in @role_users %>
+    <li><%= link_to role_user.full_name, edit_user_registration_path %> | <%= role_user.role %></li>
 <% end %>

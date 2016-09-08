@@ -18,7 +18,7 @@ class Event < ActiveRecord::Base
   
   belongs_to :user
   has_many :event_addresses, dependent: :destroy
-  accepts_nested_attributes_for :event_addresses, reject_if: lambda { |attributes| attributes['street'].blank? || attributes['street_number'].blank? || attributes['city'].blank? }
+  accepts_nested_attributes_for :event_addresses, reject_if: proc { |attributes| attributes['street'].blank? || attributes['street_number'].blank? || attributes['city'].blank? }
   #attr_reader :title
   
   

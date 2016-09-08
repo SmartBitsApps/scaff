@@ -38,7 +38,7 @@
     
     <p>
       <strong>Manažer:</strong>
-      <%= User.find_by_id(@event.manager.to_i).full_name %>
+      <%= User.find_by_id(@event.manager.to_i).full_name unless @event.manager %>
     </p>
     
     <p>

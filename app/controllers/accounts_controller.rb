@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy, :approved_registration]
+  before_action :set_account, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   after_action :verify_authorized
   after_action :approve_registration, only: [:update, :edit]
@@ -93,6 +93,42 @@ class AccountsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+  
+  def approve_registration()
+    #@user = current_user
+    binding.pry
+    @account = Account.find(params[:id])
+    authorize @account
+    #@user = @account.user
+    
+    #@user = User.find(id: @account.user_id)
+    #@user = User.find(params[:user_id])
+    
+    if params[:user_id].present?
+      @user = User.find(params[:user_id])
+    else
+      @user = User.find_by(id: @account.user_id)
+    end
+    
+    
+      if @account.status == "completed" && @user.role == "pending"
+        
+        @user.update(role: :user)
+        #@user.update_attributes(role: :user)
+        flash[:notice] = "Uživatel #{@user.full_name} byl povýšen na roli: #{@user.role}"
+        
+      else
+        flash[:notice] = "Někde se stala chyba."
+        
+      end
+    redirect_to(dashboard_path)
+    
+  end
+    
+    
+    
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -116,14 +152,6 @@ class AccountsController < ApplicationController
       params.require(:account).permit(policy(@account).permitted_attributes)
     end
     
-    def approve_registration
-      if @account.status == :completed
-        @account.user.update_attributes(role: :user)
-        
-      end
-    #@account.update_attributes(status: :completed)
-    #@account.user.update_attributes(role: :user)
-    #redirect_to :back, notice: 'Účet byl úšpěšně aktivován.'
-    end
+    
   
 end

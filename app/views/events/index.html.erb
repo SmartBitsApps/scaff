@@ -21,7 +21,7 @@
         <td><%= event.start_date %></td>
         <td><%= event.end_date %></td>
         <!-- TODO: check before delete user if he is event manager + add link_to for message and phone contact -->
-        <td><%= User.find_by(id: event.manager).full_name %></td>
+        <td><%= User.find_by(id: event.manager).full_name unless event.manager %></td>
         <td><%= link_to event.event_addresses.count, event_path(event) %></td>
         <td><%= event_brigade_sum(event) %></td>
         <td><%= link_to 'Detail', event %></td>

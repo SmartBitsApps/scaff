@@ -4,6 +4,7 @@ class AccountPolicy < ApplicationPolicy
   #    scope
   #  end
   #end
+  attr_reader :user, :account
   
   def initialize(user, account)
     raise Pundit::NotAuthorizedError, "musíte být přihlášeni" unless user
@@ -26,6 +27,11 @@ class AccountPolicy < ApplicationPolicy
   def update?
     edit?
   end
+  
+  def approve_registration?
+    @user.admin? || @user.manager?
+  end
+  
   
   # TODO: solve deletion problem (who can delete account?)
   def destroy?
